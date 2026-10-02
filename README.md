@@ -48,7 +48,7 @@ flowchart TD
 
 ---
 
-##  Engineering Approach: Phase 0 to Phase 7
+##  How do I Approach: Phase 0 to Phase 7(Bottom-Up approach)
 
 The system was conceived, engineered, and delivered in 8 disciplined milestones:
 
@@ -114,9 +114,10 @@ All test accounts are pre-seeded with password: `password`
 | Persona / Role | Email | Scope |
 | :--- | :--- | :--- |
 | **Super Admin** | `superadmin@appzex.com` | Platform Governance & Support Mode |
-| **Agency Admin** | `admin@acme.com` | Full Agency Workspace & Operations |
-| **Agency Team** | `dev@acme.com` | Project Tasks & Sprint Execution |
-| **Client Stakeholder** | `client@globex.com` | Client Portal (Globex Projects Only) |
+| **Agency Admin** | `admin@apexdigital.com` | Full Agency Workspace & Operations |
+| **Agency Team** | `dev@apexdigital.com` | Project Tasks & Sprint Execution |
+| **Client Stakeholder** | `client@globexcorp.com` | Client Portal (Globex Projects Only) |
+| **Suspended Tenant** | `admin@orbitmarketing.com` | Suspended Agency (Tests HTTP 403 Lockout) |
 
 ---
 
