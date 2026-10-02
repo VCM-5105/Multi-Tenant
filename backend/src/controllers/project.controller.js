@@ -37,7 +37,7 @@ export const getProjects = asynchandler(async (req, res) => {
     params.push(clientId);
   }
 
-  query += " GROUP BY p.id ORDER BY p.created_at DESC";
+  query += " GROUP BY p.id, c.id, c.company_name, pm.id, pm.name ORDER BY p.created_at DESC";
 
   const [projects] = await pool.query(query, params);
 
