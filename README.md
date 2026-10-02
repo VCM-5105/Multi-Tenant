@@ -4,6 +4,9 @@
 
 ---
 
+🌐 **Live Demo**: [multi-tenant-nine.vercel.app](https://multi-tenant-nine.vercel.app/)  
+📐 **Database Architecture**: [Eraser.io Schema Diagram](https://app.eraser.io/workspace/pjWX7IEuwEsV1oFdXmGx?origin=share)
+
 ## 🎯 Executive Overview
 
 Agencies often suffer from operational fragmentation: internal teams manage sprints in one tool, while client communication, change requests, and deliverables are scattered across emails and chat apps. 
@@ -12,6 +15,16 @@ Agencies often suffer from operational fragmentation: internal teams manage spri
 
 ---
 
+##  Key Highlights
+
+* **Strict Multi-Tenant Row-Level Isolation**: Every query across all workspace resources is scoped by `agency_id` at the middleware layer. Suspended agencies are blocked platform-wide in $O(1)$ time via tenant middleware.
+* **IDOR-Proof Role-Based Access Control (RBAC)**: 4 distinct persona levels (`super_admin`, `agency_admin`, `agency_team`, `client`). Client access is double-scoped to ensure clients can never inspect siblings' projects or files.
+* **Dynamically Derived Metrics Engine**: Eliminates state desynchronization by deriving project progress dynamically as `(completed_tasks / total_tasks) * 100` in SQL/memory rather than persisting arbitrary percentage counters.
+* **Super Admin Support Mode (Secure Impersonation)**: Platform administrators can diagnose agency workspaces via ephemeral support tokens without credential sharing, highlighted by an immutable audit log and sticky UI banner.
+* **AI Meeting Summarizer**: Automatically condenses unstructured discussion notes into structured key takeaways, actionable checklist items, and follow-up suggestions.
+* **Minimalist Aesthetic (Productive.io style)**: Built with Next.js 14 App Router (`.jsx`), Tailwind CSS, and a centralized Axios API client.
+
+---
 
 ## 🏗️ System Workflow & Architecture
 
@@ -35,7 +48,7 @@ flowchart TD
 
 ---
 
-## 📈 Engineering Approach: Phase 0 to Phase 7
+##  Engineering Approach: Phase 0 to Phase 7
 
 The system was conceived, engineered, and delivered in 8 disciplined milestones:
 
@@ -77,6 +90,9 @@ The system was conceived, engineered, and delivered in 8 disciplined milestones:
 * Created a 4-Role interactive login card switcher with one-click demo autofill pills for instant testing.
 * Designed modular cards, badges, progress bars, and modals following the minimalist **Productive.io** design philosophy.
 
+### **Phase 8: Security Auditing & Cross-Tenant IDOR Testing**
+* Executed cross-tenant penetration testing to verify zero data leakage across agencies and ensure client users cannot access sibling accounts or unauthorized assets.
+
 ---
 
 
@@ -91,6 +107,17 @@ The system was conceived, engineered, and delivered in 8 disciplined milestones:
 
 
 
+## 🔑 Demo Credentials Matrix
 
+All test accounts are pre-seeded with password: `password`
+
+| Persona / Role | Email | Scope |
+| :--- | :--- | :--- |
+| **Super Admin** | `superadmin@appzex.com` | Platform Governance & Support Mode |
+| **Agency Admin** | `admin@acme.com` | Full Agency Workspace & Operations |
+| **Agency Team** | `dev@acme.com` | Project Tasks & Sprint Execution |
+| **Client Stakeholder** | `client@globex.com` | Client Portal (Globex Projects Only) |
+
+---
 
 

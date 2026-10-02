@@ -1,17 +1,8 @@
--- =====================================================================
--- AppZex Multi-Tenant SaaS - Initial Baseline Seed Data
--- =====================================================================
--- INSTRUCTION: Run this script in the SAME database as your tables (e.g. appzex_db).
--- All seed accounts have the default password: Password123!
--- Bcrypt Hash for "Password123!": $2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xTw3.551E5.U.P0d.rO
--- =====================================================================
+
 
 USE appzex_db;
 
--- -------------------------------------------------------------
--- 1. SEED AGENCIES (Tenants)
--- -------------------------------------------------------------
--- Agency 1: Active agency
+
 INSERT INTO agencies (id, name, slug, plan, status, primary_email, phone)
 VALUES (
     'agency-001-apex',
@@ -93,9 +84,7 @@ VALUES (
     TRUE
 );
 
--- -------------------------------------------------------------
--- 3. SEED AGENCY MEMBERS (Role & Agency Bindings)
--- -------------------------------------------------------------
+
 -- Sarah is Agency Admin at Apex
 INSERT INTO agency_members (id, agency_id, user_id, role, job_title)
 VALUES (
@@ -126,9 +115,7 @@ VALUES (
     'Agency Owner'
 );
 
--- -------------------------------------------------------------
--- 4. SEED CLIENT COMPANY (Customer of Apex Digital)
--- -------------------------------------------------------------
+
 INSERT INTO clients (id, agency_id, company_name, primary_contact_person, email, phone, notes)
 VALUES (
     'cli-001-globex',
@@ -140,9 +127,6 @@ VALUES (
     'VIP Enterprise Client - E-Commerce Migration Project'
 );
 
--- -------------------------------------------------------------
--- 5. SEED CLIENT MEMBERS (Client Portal Login Binding)
--- -------------------------------------------------------------
 INSERT INTO client_members (id, agency_id, client_id, user_id, designation)
 VALUES (
     'climem-001',

@@ -1,7 +1,3 @@
--- =====================================================================
--- AppZex Multi-Tenant SaaS Platform - Pure Relational Schema (MySQL 8+)
--- Zero hardcoded values. Designed for strict tenant & client isolation.
--- =====================================================================
 
 CREATE DATABASE IF NOT EXISTS appzex_db 
 CHARACTER SET utf8mb4 
@@ -21,7 +17,7 @@ CREATE TABLE IF NOT EXISTS agencies (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_agencies_status (status)
-) ENGINE=InnoDB;
+) ;
 
 -- 2. Global Users (AppZex platform users)
 CREATE TABLE IF NOT EXISTS users (
